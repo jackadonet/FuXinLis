@@ -1,0 +1,29 @@
+﻿using FuXin.Lis.DAL.Common;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FuXin.Lis.BLL.Common.Impl
+{
+    /// <summary>
+    /// 接口实现层
+    /// </summary>
+    public class YiChangService : IYiChangService
+    {
+        private readonly YiChangServiceDAL _yiChangServiceDAL;
+
+        public YiChangService()
+        {
+            _yiChangServiceDAL = new YiChangServiceDAL();
+        }
+
+        public Task<string> GetList()
+        {
+            //这里写具体的业务逻辑代码
+            var rt = _yiChangServiceDAL.GetString();
+            return rt;
+        }
+    }
+}

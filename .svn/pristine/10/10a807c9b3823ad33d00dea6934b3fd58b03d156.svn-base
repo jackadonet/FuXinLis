@@ -1,0 +1,12 @@
+{
+  "InstrumentNo": "1009",
+  "Instrument": [
+    {
+      "No": "1009",
+      "Name": "雪球分析仪",
+      "CommType": 1, //通讯类型1 串口 2网口 3文件 4数据库
+      "CommAddress": "192.168.1.1,8009",
+      "Protocol": "HL7"//协议类型
+    }
+  ]
+}

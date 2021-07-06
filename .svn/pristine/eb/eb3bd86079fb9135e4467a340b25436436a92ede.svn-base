@@ -1,0 +1,37 @@
+﻿using FuXin.Lis.API.Filters;
+using FuXin.Lis.API.Models.LaoNianRenTiJian;
+using FuXin.Lis.BLL.Common;
+using FuXin.Lis.BLL.Common.Impl;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web.Http;
+
+namespace FuXin.Lis.API.Controllers.ZhiJiang
+{
+    /// <summary>
+    /// 老年人体检系统对接
+    /// </summary>
+    [RoutePrefix("laonianrentijian")]
+    public class LaoNianRenTiJianController : BaseController
+    {
+        private readonly IYiChangService _yiChangService;
+
+        public LaoNianRenTiJianController()
+        {
+            _yiChangService = new YiChangService();
+        }
+
+        [HttpPost]
+        [NotAuthentication]
+        [Route("postsampleinfo")]
+        public async Task<IHttpActionResult>  PostSampleInfo([FromBody] SampleInfo entity)
+        {
+           var list = await _yiChangService.GetList();
+           return Json(list);
+        }
+    }
+}

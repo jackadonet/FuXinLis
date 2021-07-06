@@ -1,0 +1,25 @@
+﻿using Dapper;
+using FuXin.Lis.DataAccess.Dapper;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FuXin.Lis.DAL.Common
+{
+    public class YiChangServiceDAL
+    {
+        public async Task<string> GetString()
+        {
+            using (var conn = OrclDapperHelper.GetConnection(false))
+            {
+                StringBuilder strSql = new StringBuilder();
+                strSql.Append(@" select * from S_WeChatFile a where a.downloadflag=:type");
+                var obj = await conn.QueryAsync<object>(strSql.ToString(), null);
+                return obj == null ? "" : Convert.ToString(obj);
+            }
+        }
+    }
+}
